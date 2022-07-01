@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502A2BBE286E43C7003ADF8A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A2BBD286E43C7003ADF8A /* NewsViewModel.swift */; };
 		503C2616286C8BAF0073CEF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C2615286C8BAF0073CEF6 /* AppDelegate.swift */; };
 		503C2618286C8BAF0073CEF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C2617286C8BAF0073CEF6 /* SceneDelegate.swift */; };
 		503C261D286C8BAF0073CEF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503C261B286C8BAF0073CEF6 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		502A2BBD286E43C7003ADF8A /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		503C2612286C8BAF0073CEF6 /* RxSwift_NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503C2615286C8BAF0073CEF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503C2617286C8BAF0073CEF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		502A2BBC286E43B4003ADF8A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				502A2BBD286E43C7003ADF8A /* NewsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		503C2609286C8BAF0073CEF6 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		503C2614286C8BAF0073CEF6 /* RxSwift_NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				502A2BBC286E43B4003ADF8A /* ViewModels */,
 				503C2632286C9CE30073CEF6 /* Extensions */,
 				503C262F286C96930073CEF6 /* Cell */,
 				503C262C286C94B80073CEF6 /* Controllers */,
@@ -251,6 +262,7 @@
 				503C2616286C8BAF0073CEF6 /* AppDelegate.swift in Sources */,
 				503C2618286C8BAF0073CEF6 /* SceneDelegate.swift in Sources */,
 				503C2634286C9CF70073CEF6 /* URLRequest + Extensions.swift in Sources */,
+				502A2BBE286E43C7003ADF8A /* NewsViewModel.swift in Sources */,
 				503C262A286C8D790073CEF6 /* NewsTableViewController.swift in Sources */,
 				503C262E286C94C30073CEF6 /* Model.swift in Sources */,
 			);

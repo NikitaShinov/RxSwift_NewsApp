@@ -14,7 +14,7 @@ class NewsTableViewController: UITableViewController {
     
     let disposeBag = DisposeBag()
     
-    private var articles = [Article]()
+    private var articlesListViewModel: NewsListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +26,20 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        articles.count
+        return articlesListViewModel == nil ? 0 : articlesListViewModel.newsVM.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else { fatalError() }
         
-        cell.titleLabel.text = articles[indexPath.row].title
-        cell.descriptionLabel.text = articles[indexPath.row].description
+        let articleVM = articlesListViewModel.newsAt(indexPath.row)
+        articleVM.title.asDriver(onErrorJustReturn: "")
+            .drive(cell.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        articleVM.description.asDriver(onErrorJustReturn: "")
+            .drive(cell.descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
         
         return cell
     }
@@ -41,12 +47,13 @@ class NewsTableViewController: UITableViewController {
     private func populateNews() {
         
         URLRequest.load(resource: ArticleList.all)
-            .subscribe(onNext: { [weak self] result in
-                if let result = result {
-                    self?.articles = result.articles
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
+            .subscribe(onNext: { newsResponse in
+                
+                let articles = newsResponse.articles
+                self.articlesListViewModel = NewsListViewModel(articles)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }).disposed(by: disposeBag)
     }
